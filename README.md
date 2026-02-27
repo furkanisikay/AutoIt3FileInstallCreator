@@ -43,16 +43,6 @@ msbuild .\AutoIt3FileInstallCreator.sln /t:Restore,Build /p:Configuration=Releas
    - `MaterialSkinPath` tanımlanmazsa proje varsayılan olarak `AutoIt3FileInstallCreator\libs\MaterialSkin.dll` yolunu kullanır.
    - Bu durumda `libs` klasörünü oluşturup `MaterialSkin.dll` dosyasını bu konuma koymanız gerekir.
 
-## Güvenlik Notu (Kod Denetimi)
-- Kod tabanı hardcoded şifre, API anahtarı ve token ifadeleri için taranmıştır.
-- Kritik bulgu: `.csproj` içinde geliştirici makinesine ait sabit yerel yol (`...\\Furkan...`) vardı.
-- Çözüm: Bağımlılık yolu `$(MaterialSkinPath)` ile ortam değişkenine taşındı.
-
-## Refactoring Planı (Önceliklendirilmiş İlk 3 Adım)
-1. **İş mantığını UI katmanından ayırın**: `KlasorCiktiOlustur` ve `CiktiOlustur` metotlarını ayrı bir servis sınıfına taşıyarak test edilebilirliği artırın.
-2. **Tekrarlı satır-sonu temizliğini merkezileştirin**: `ResultForm` içindeki benzer `StringBuilder` sonlandırma kodlarını tek yardımcı metoda toplayın.
-3. **Hata yönetimini güçlendirin**: Geçersiz klasör durumunda akışı `return` ile kesip gereksiz işlemleri önleyin; dosya erişim hataları için kullanıcıya açıklayıcı mesaj verin.
-
 ## Katkı
 Katkı süreci için `CONTRIBUTING.md` dosyasını inceleyin.
 
