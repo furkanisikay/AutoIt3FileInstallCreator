@@ -35,9 +35,12 @@
   <PropertyGroup>
     <ApplicationIcon>MyAutoIt3_Blue.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <MaterialSkinPath Condition="'$(MaterialSkinPath)' == ''">$(MSBuildProjectDirectory)\libs\MaterialSkin.dll</MaterialSkinPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MaterialSkin">
-      <HintPath>..\..\..\..\..\..\NoviceHacker TOOLS\2.PROJELERİM\Masaüstü Programlama\C#\1) C# Yardımcı Araçlar\Temalar\Material UI\MaterialSkin-master\MaterialSkin\bin\Release\MaterialSkin.dll</HintPath>
+      <HintPath>$(MaterialSkinPath)</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
