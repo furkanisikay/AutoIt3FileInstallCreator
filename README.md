@@ -22,7 +22,7 @@ AutoIt3 ile kurulum betikleri hazırlarken `FileInstall(...)` satırlarını kla
 ```powershell
 git clone https://github.com/furkanisikay/AutoIt3FileInstallCreator.git
 cd AutoIt3FileInstallCreator
-$env:MaterialSkinPath="C:\\kutuphaneler\\MaterialSkin.dll"
+$env:MaterialSkinPath='C:\kutuphaneler\MaterialSkin.dll'
 msbuild .\AutoIt3FileInstallCreator.sln /t:Restore,Build /p:Configuration=Release
 ```
 
@@ -36,9 +36,12 @@ msbuild .\AutoIt3FileInstallCreator.sln /t:Restore,Build /p:Configuration=Releas
    - `AutoIt3FileInstallCreator.csproj` dosyası artık `MaterialSkinPath` ortam değişkenini kullanır.
 3. **Ortam değişkeni tanımlama (PowerShell)**
    ```powershell
-   setx MaterialSkinPath "C:\\kutuphaneler\\MaterialSkin.dll"
+   setx MaterialSkinPath "C:\kutuphaneler\MaterialSkin.dll"
    ```
    Yeni terminal açtıktan sonra derleme komutlarını çalıştırın.
+4. **Opsiyonel fallback yolu**
+   - `MaterialSkinPath` tanımlanmazsa proje varsayılan olarak `AutoIt3FileInstallCreator\libs\MaterialSkin.dll` yolunu kullanır.
+   - Bu durumda `libs` klasörünü oluşturup `MaterialSkin.dll` dosyasını bu konuma koymanız gerekir.
 
 ## Güvenlik Notu (Kod Denetimi)
 - Kod tabanı hardcoded şifre, API anahtarı ve token ifadeleri için taranmıştır.
